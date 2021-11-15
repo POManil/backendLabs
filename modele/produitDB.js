@@ -1,25 +1,25 @@
 module.exports.getProduit = async (id, client) => {
 	return await client.query(`SELECT *
 								FROM produit
-								WHERE id = $1`, [id]
-							);
+								WHERE id = ${id};`
+							); // "select * from produit where id = $1", [id]
 }
 
 module.exports.postProduit = async (nom, prix, client) => {
 	return await client.query(`INSERT INTO produit (nom, prix)
-								VALUES ($1, $2)`, [nom, prix]
+								VALUES (${nom}, ${prix});`
 							);
 }
 
 module.exports.updatePrix = async (id, prix) => {
 	return await client.query(`UPDATE produit 
-								SET prix = $1 
-								WHERE id = $2`, [prix, id]
+								SET prix = ${prix} 
+								WHERE id = ${id};`
 							);
 }
 
 module.exports.deleteProduit = async (id) => {
 	return await client.query(`DELETE FROM produit 
-								WHERE id = $1`, [id]
+								WHERE id = ${id};`
 							);
 }
