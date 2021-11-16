@@ -2,7 +2,7 @@ module.exports.getProduit = async (id, client) => {
 	return await client.query(`SELECT *
 								FROM produit
 								WHERE id = ${id};`
-							); // "select * from produit where id = $1", [id]
+							);
 }
 
 module.exports.postProduit = async (nom, prix, client) => {
