@@ -5,6 +5,7 @@ const path = require("path");
 async function initDB(){
     const client = await pool.connect();
     try{
+        // fs : fileSystem
         const query = fs.readFileSync(path.join(__dirname, "../SQL/createDB.SQL"), "utf-8");
         await client.query(query);
     } catch (e) {
